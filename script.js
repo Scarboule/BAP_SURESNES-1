@@ -1,5 +1,5 @@
 // Constants
-const GAME_DURATION = 5; // seconds
+const GAME_DURATION = 120; // seconds
 const OBJECT_FALL_SPEED = 1; // pixels per frame
 const OBJECT_SPAWN_DELAY = 800; // milliseconds
 const OBJECT_SPAWN_PROBABILITY = 0.7; // probability of a new object spawning on each frame
@@ -24,6 +24,10 @@ const bucketEl = document.getElementById('bucket');
 const spawn = document.getElementById("spawn-container")
 const result = document.getElementById("Result")
 const objectsContainerEl = document.getElementById('objects-container');
+const game = document.getElementById('game-container');
+const BODY = document.querySelector("body");
+let gameMargin = BODY.offsetWidth - game.offsetWidth;
+
 
 // Event listeners
 bucketEl.addEventListener('mousedown', startMoveBucket);
@@ -32,6 +36,9 @@ document.addEventListener('mouseup', stopMoveBucket);
 document.addEventListener('touchend', stopMoveBucket);
 
 // Functions
+
+
+
 function startMoveBucket(e) {
   e.preventDefault();
   bucketEl.classList.add('moving');
@@ -50,8 +57,21 @@ function moveBucket(e) {
   const containerRect = objectsContainerEl.getBoundingClientRect();
   const x = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
   const relX = x - containerRect.left;
-  bucketEl.style.left = `${Math.max(Math.min(relX - bucketEl.offsetWidth / 2, containerRect.width - bucketEl.offsetWidth), 0)}px`;
+  const bucketWidth = bucketEl.offsetWidth;
+  const maxLeft = containerRect.width - bucketWidth + gameMargin; // Nouvelle valeur pour définir la position maximale à gauche
+  const left = Math.min(Math.max(relX - bucketWidth / 2, 0), maxLeft); // Utiliser Math.min() et Math.max() pour limiter la position gauche du seau
+  bucketEl.style.left = `${left}px`;
 }
+/*function moveBucket(e) {
+  e.preventDefault();
+  const containerRect = objectsContainerEl.getBoundingClientRect();
+  const x = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+  const relX = x - containerRect.left;
+  bucketEl.style.left = `${Math.max(Math.min(relX - bucketEl.offsetWidth / 2, containerRect.width - bucketEl.offsetWidth), 0)}px`;
+}*/
+
+
+
 
 function spawnObject() {
   const object = document.createElement('div');
@@ -137,6 +157,8 @@ function updateTimer() {
 }
 
 function startGame() {
+    BODY.style.margin= "0 0 700px 0"
+    game.classList.toggle("hidd");
     // Reset game variables
     updateImage();
     score = 0;
@@ -197,4 +219,4 @@ function startGame() {
   }
     
     // Start the game
-startGame();
+

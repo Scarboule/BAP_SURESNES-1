@@ -77,4 +77,8 @@ body{
     background-image: url(image/burger.png);
     background-size: 80px;
   }
+  .game-section{
+    display: flex;
+    flex-direction: column;
+  }
   
