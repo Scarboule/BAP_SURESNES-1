@@ -86,7 +86,7 @@ function spawnObject() {
   }
   object.style.top = '-50px';
 
-  object.style.left = `${Math.floor(Math.random() * (spawn.offsetWidth - object.offsetWidth))}px`;
+  object.style.left = `${Math.floor(Math.random() * (spawn.offsetWidth - 60))}px`;
   objectsContainerEl.appendChild(object);
   objects.push(object);
   lastSpawnTime = Date.now();
