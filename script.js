@@ -160,9 +160,12 @@ function updateTimer() {
 }
 
 function startGame() {
+  spawn.style.display = "Block"
+  result.style.display = "None"
   var scrollTopValue = window.pageYOffset || document.documentElement.scrollTop;
   gameOverlay.style.top = scrollTopValue + "px";
   gameOverlay.classList.toggle("hidd");
+  console.log("cool")
   isStarted = true;
   // Reset game variables
   updateImage();
