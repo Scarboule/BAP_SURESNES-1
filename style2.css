@@ -1,95 +1,113 @@
+body {
+  position: relative;
+}
 
+.game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
 
-.hidd{
-  display: none;
+.game-section {
+  width: 80vw;
+  height: 80%;
 }
-.sho{
-  display: block;
-}
-.game-section{
-  margin: 10%;
-}
-#Result{
+
+#Result {
   position: absolute;
   width: 80vw;
-  height: 80vh;
-  top: 10vh;
-  left: 10vw;
+  height: 80%;
   display: none;
 }
-#promocode{
+
+#promocode {
   font-size: 36px;
   text-align: center;
   vertical-align: middle;
 }
 
-#game-container { 
+#game-container {
   position: absolute;
-    width: 80vw;
-    height: 600px;
-    margin: 0 auto;
-    background-image: url(image/bg.png);
-    background-position: center;
-    background-size: cover;
-  }
-#spawn-container{
+  width: 80vw;
+  height: 600px;
+  margin: 0 auto;
+  background-image: url("./image/bg.png");
+  background-position: center;
+  background-size: cover;
+}
+
+#spawn-container {
   width: 80vw;
   margin-left: auto;
   margin-right: auto;
 }
-  
-  #score-container {
-  
-    top: 10px;
-    left: 10px;
-    font-size: 24px;
-  }
-  
-  #score-label {
-    font-weight: bold;
-  }
-  
-  #bucket {
-    transform-origin: 50% 50%;
-    position: absolute;
-    bottom: 10vh;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    cursor: pointer;
-    user-select: none;
-    touch-action: none;
-    background-image: url(Minigame/image/Panier.png);
-    background-position: center;
-  }
-#johndoe{
+
+#score-container {
+
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+}
+
+#score-label {
+  font-weight: bold;
+}
+
+#bucket {
+  transform-origin: 50% 50%;
+  position: absolute;
+  bottom: 10vh;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  touch-action: none;
+  background-image: url("./image/Panier.png");
+  background-position: center;
+}
+
+#johndoe {
   display: none;
   font-size: 200px;
   font-weight: 900;
   font-family: calc(12*52);
 }
 
-  
-  #objects-container {
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 80vw;
-    height: 312px;
-  }
-  
-  .object {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-image: url(image/pomme.png);
-    background-position: center;
-    background-size: 50px;
-  }
-  
-  .object.dangerous {
-    background-image: url(image/burger.png);
-    background-size: 80px;
-  }
 
-  
+#objects-container {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 80vw;
+  height: 312px;
+}
+
+.object {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-image: url("./image/pomme.png");
+  background-position: center;
+  background-size: 50px;
+}
+
+.object.dangerous {
+  background-image: url("./image/burger.png");
+  background-size: 80px;
+}
+
+.hidd {
+  display: none;
+}
+
+.sho {
+  display: block;
+}

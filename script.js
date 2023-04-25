@@ -1,5 +1,5 @@
 // Constants
-const GAME_DURATION = 120; // seconds
+const GAME_DURATION = 10; // seconds
 const OBJECT_FALL_SPEED = 1; // pixels per frame
 const OBJECT_SPAWN_DELAY = 800; // milliseconds
 const OBJECT_SPAWN_PROBABILITY = 0.7; // probability of a new object spawning on each frame
@@ -18,12 +18,15 @@ let lastSpawnTime = 0;
 let gameStartTime = null;
 let gameTimer = null;
 
+let isStarted = false;
+
 // DOM elements
 const scoreEl = document.getElementById('score');
 const bucketEl = document.getElementById('bucket');
 const spawn = document.getElementById("spawn-container")
 const result = document.getElementById("Result")
 const objectsContainerEl = document.getElementById('objects-container');
+const gameOverlay = document.querySelector('.game-overlay');
 const game = document.getElementById('game-container');
 const BODY = document.querySelector("body");
 let gameMargin = BODY.offsetWidth - game.offsetWidth;
@@ -82,7 +85,6 @@ function spawnObject() {
     object.classList.add('dangerous');
   }
   object.style.top = '-50px';
-  console.log(spawn.offsetWidth)
 
   object.style.left = `${Math.floor(Math.random() * (spawn.offsetWidth - object.offsetWidth))}px`;
   objectsContainerEl.appendChild(object);
@@ -90,12 +92,12 @@ function spawnObject() {
   lastSpawnTime = Date.now();
 }
 
-function updateImage(){
-  if(score>=50){
-    bucketEl.style.backgroundImage="url(image/panier_pomme.png)";
-  }else{
-    console.log("pas cool")
-    bucketEl.style.backgroundImage="url(image/Panier.png)";
+function updateImage() {
+  if (score >= 50) {
+    bucketEl.style.backgroundImage = "url(image/panier_pomme.png)";
+  } else {
+    //console.log("pas cool")
+    bucketEl.style.backgroundImage = "url(image/Panier.png)";
   }
 }
 
@@ -105,44 +107,45 @@ function removeObject(object) {
 }
 
 function handleObjectFall() {
-    // Loop through all objects and update their position
-    bucketcollide = bucketEl.getBoundingClientRect();
-    objects.forEach((obj) => {
-      actualheight = parseFloat(obj.style.top)
-      obj.style.top= actualheight + OBJECT_FALL_SPEED + "px";
-      
-      
-      objcollide = obj.getBoundingClientRect();
-      // Check for collision with bucket
-      if (bucketcollide.bottom >= objcollide.bottom && bucketcollide.top <= objcollide.top) {
-        if(bucketcollide.left<=objcollide.left && bucketcollide.right>=objcollide.right){
-          // Deduct score and remove object
-          if(obj.classList.contains("collectible")){
-            score += OBJECT_POINTS;
-            
-          }
-          else{
-            score -= OBJECT_PENALTY_POINTS
-          }
+  // Loop through all objects and update their position
+  bucketcollide = bucketEl.getBoundingClientRect();
+  objects.forEach((obj) => {
+    actualheight = parseFloat(obj.style.top)
+    obj.style.top = actualheight + OBJECT_FALL_SPEED + "px";
 
-          updateImage();
-          scoreEl.textContent = score;
-          objectsContainerEl.removeChild(obj);
+
+    objcollide = obj.getBoundingClientRect();
+    // Check for collision with bucket
+    if (bucketcollide.bottom >= objcollide.bottom && bucketcollide.top <= objcollide.top) {
+      if (bucketcollide.left <= objcollide.left && bucketcollide.right >= objcollide.right) {
+        // Deduct score and remove object
+        if (obj.classList.contains("collectible")) {
+          score += OBJECT_POINTS;
+
         }
-      }
-  
-      // Remove object if it goes below the screen
-      if (objcollide.bottom > GAME_HEIGHT) {
+        else {
+          score -= OBJECT_PENALTY_POINTS
+        }
+
+        updateImage();
+        scoreEl.textContent = score;
         objectsContainerEl.removeChild(obj);
       }
-    });
-  }
+    }
+
+    // Remove object if it goes below the screen
+    if (objcollide.bottom > GAME_HEIGHT) {
+      objectsContainerEl.removeChild(obj);
+    }
+  });
+}
 
 function handleGameEnd() {
   clearInterval(gameTimer);
-  spawn.style.display="None"
-  result.style.display="Block"
+  spawn.style.display = "None"
+  result.style.display = "Block"
   generateCode();
+  gameEndCloseTimer();
 }
 
 
@@ -157,66 +160,83 @@ function updateTimer() {
 }
 
 function startGame() {
-    BODY.style.margin= "0 0 700px 0"
-    game.classList.toggle("hidd");
-    // Reset game variables
-    updateImage();
-    score = 0;
-    objects = [];
-    lastSpawnTime = 0;
-    gameStartTime = null;
-    
-    // Clear objects container
-    while (objectsContainerEl.firstChild) {
+  var scrollTopValue = window.pageYOffset || document.documentElement.scrollTop;
+  gameOverlay.style.top = scrollTopValue + "px";
+  gameOverlay.classList.toggle("hidd");
+  isStarted = true;
+  // Reset game variables
+  updateImage();
+  score = 0;
+  objects = [];
+  lastSpawnTime = 0;
+  gameStartTime = null;
+
+  // Clear objects container
+  while (objectsContainerEl.firstChild) {
     objectsContainerEl.removeChild(objectsContainerEl.firstChild);
-    }
-    
-    // Set up initial score and timer display
-    scoreEl.textContent = score;
-    document.getElementById('timer').textContent = GAME_DURATION;
-    
-    // Start game loop
-    gameTimer = setInterval(() => {
+  }
+
+  // Set up initial score and timer display
+  scoreEl.textContent = score;
+  document.getElementById('timer').textContent = GAME_DURATION;
+
+  // Start game loop
+  gameTimer = setInterval(() => {
     if (!gameStartTime) {
-    gameStartTime = Date.now();
+      gameStartTime = Date.now();
     }
     if (Date.now() - lastSpawnTime > OBJECT_SPAWN_DELAY) {
-    spawnObject();
+      spawnObject();
     }
     handleObjectFall();
     updateTimer();
-    }, 1); // frames per second
-    }
+  }, 1); // frames per second
+}
 
-    
-  function generateCode(){
-    code = ""
-    listcharacter=['A',"B"];
-    for(i=0;i<4;i++){
-      code += listcharacter[Math.floor(Math.random() * listcharacter.length)]
-    }
-    document.getElementById('promocode').textContent=code
+
+function generateCode() {
+  code = ""
+  listcharacter = ['A', "B"];
+  for (i = 0; i < 4; i++) {
+    code += listcharacter[Math.floor(Math.random() * listcharacter.length)]
   }
+  document.getElementById('promocode').textContent = code
+}
 
-  const wincodes=['AAAA',"BBBB","ABAB","BBAA","BAAA","BBBA","BABA"];
+const wincodes = ['AAAA', "BBBB", "ABAB", "BBAA", "BAAA", "BBBA", "BABA"];
 
 
-  function checkcode(){
-    let win = false
-    let textresultcode = ""
-    wincodes.forEach(wincode =>{
-      if(code == wincode){
-        win = true
-      }
-    }) 
-    const resultcode = document.createElement("p");
-    if(win == true){
-      resultcode.textContent=("you win")
-    }else{
-      resultcode.textContent=("you lose")
+function checkcode() {
+  let win = false
+  let textresultcode = ""
+  wincodes.forEach(wincode => {
+    if (code == wincode) {
+      win = true
     }
-    result.appendChild(resultcode);
+  })
+  const resultcode = document.createElement("p");
+  if (win == true) {
+    resultcode.textContent = ("you win")
+  } else {
+    resultcode.textContent = ("you lose")
   }
-    
+  result.appendChild(resultcode);
+}
+
     // Start the game
 
+window.onscroll = function () {
+  var scrollTopValue = window.pageYOffset || document.documentElement.scrollTop;
+  gameOverlay.style.top = scrollTopValue + "px";
+};
+
+gameOverlay.addEventListener('click', () => {
+  if (!isStarted) {
+    gameOverlay.classList.toggle("hidd");
+  } 
+});
+
+async function gameEndCloseTimer() {
+  await new Promise(r => setTimeout(r, 2000));
+  isStarted = false;
+}
