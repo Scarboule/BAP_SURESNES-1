@@ -1,12 +1,12 @@
 // Constants
-const GAME_DURATION = 10; // seconds
+const GAME_DURATION = 1000; // seconds
 const OBJECT_FALL_SPEED = 1; // pixels per frame
 const OBJECT_SPAWN_DELAY = 800; // milliseconds
 const OBJECT_SPAWN_PROBABILITY = 0.7; // probability of a new object spawning on each frame
 const OBJECT_POINTS = 10; // points awarded for catching a collectible object
 const OBJECT_PENALTY_POINTS = 20; // points deducted for catching a dangerous object
 const OBJECT_SIZE = 50;
-const GAME_HEIGHT = 800; // Change the value as needed
+const GAME_HEIGHT = 600; // Change the value as needed
 const BUCKET_HEIGHT = 50;
 const BUCKET_TOP = GAME_HEIGHT - BUCKET_HEIGHT;
 
@@ -158,7 +158,10 @@ function updateTimer() {
     document.getElementById('timer').textContent = remainingSeconds;
   }
 }
-
+function stopGame(){
+  clearInterval(gameTimer);
+  isStarted = false;
+}
 function startGame() {
   var scrollTopValue = window.pageYOffset || document.documentElement.scrollTop;
   gameOverlay.style.top = scrollTopValue + "px";
@@ -180,17 +183,19 @@ function startGame() {
   scoreEl.textContent = score;
   document.getElementById('timer').textContent = GAME_DURATION;
 
-  // Start game loop
-  gameTimer = setInterval(() => {
-    if (!gameStartTime) {
-      gameStartTime = Date.now();
-    }
-    if (Date.now() - lastSpawnTime > OBJECT_SPAWN_DELAY) {
-      spawnObject();
-    }
-    handleObjectFall();
-    updateTimer();
-  }, 1); // frames per second
+    
+  
+    // Start game loop
+    gameTimer = setInterval(() => {
+      if (!gameStartTime) {
+        gameStartTime = Date.now();
+      }
+      if (Date.now() - lastSpawnTime > OBJECT_SPAWN_DELAY) {
+        spawnObject();
+      }
+      handleObjectFall();
+      updateTimer();
+    }, 1); // frames per second
 }
 
 

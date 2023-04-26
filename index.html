@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style2.css">
     <title>Suresnes</title>
 </head>
@@ -13,6 +15,9 @@
 <body class="text-blue-700">
     <section class="game-overlay hidd">
         <section class="game-section">
+            <div class="exit-game absolute top-[3%] right-[5%] text-4xl text-white" onclick="stopGame()">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
             
     
             <div id="game-container">
@@ -84,8 +89,24 @@
         </div>
     </main>
 
+    <div class="call-to-game w-1/2 shadow-lg rounded-lg overflow-hidden mt-20 m-auto font-bold">
+        <div class="w-full h-full relative">
+            <div class="flex absolute inset-[50%] z-10 text-xl gap-3 justify-center items-center fa-beat" onclick="startGame()">
+                <i class="fa-solid fa-play  "></i>
+                <p class="" >Jouer</p>
+            </div>
+
+            <img src="image/bg.png" alt="game-background" class="inset-[50%] w-full h-full sepia hover:sepia-0 transition duration-300 ease-in-out opacity-50">
+        
+            <div class="absolute z-10 top-[15%] w-full flex justify-center text-black">
+                <h3 class="call-to-play p-4  rounded">Tentez de gagner un code de réduction</h3>
+            </div>
+        </div>
+        
+    </div>
+
     <section class="py-12 flex flex-col items-center justify-center">
-        <button onclick="startGame()" class="mt-4 py-2 px-4 bg-blue-500 text-white font-bold rounded hover:bg-blue-700">Jouer</button>
+        
 
         <form class="w-1/2 p-8 bg-white shadow-lg rounded-lg" onsubmit="return checkCode()">
             <label class="block mb-4 font-bold text-gray-700">Entrez votre code :</label>

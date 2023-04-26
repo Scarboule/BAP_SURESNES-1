@@ -11,7 +11,7 @@ body {
   align-items: center;
   height: 100vh;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 100;
 }
 
@@ -50,12 +50,15 @@ body {
 }
 
 #score-container {
-
+  color: black;
+  font-weight: 700;
   top: 10px;
   left: 10px;
   font-size: 24px;
 }
-
+#timer-container{
+  color: black;
+}
 #score-label {
   font-weight: bold;
 }
@@ -111,3 +114,7 @@ body {
 .sho {
   display: block;
 }
+.call-to-play{
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
