@@ -20,14 +20,14 @@
       <a class = "block text-center md:inline" href="#">Mes Loisirs</a>
       <a class="font-bold flex items-center justify-center gap-4 text-white bg-[#F39653] md:rounded-full px-4 py-2" href="#"><img src="img/ordi 1.png">Budget Participatif</a>
     </nav>
-    <a href="javascript:void(0);" class="icon absolute top-2 right-2" onclick="myFunction()">
-      <p id="burger-button" class="block md:hidden">&#9776</p>
-    </a>
   </header>
   <div id="baniere" class="font-semibold text-lg text-white flex sm:gap-8 gap-2 bg-[url('./img/background.png')] px-[10vw] py-6 w-full bg-center">
     <a href="index.html">Accueil</a>
     <p class="font-bold">-</p>
     <a class="text-gray-200" href="PAT.html">Découvrez la PAT</a>
+    <a href="javascript:void(0);" class="icon absolute right-4" onclick="Burger()">
+      <p id="burger-button" class="block md:hidden">&#9776</p>
+    </a>
   </div>
     <main class="my-[76px] px-[10vw] lg:text-xl xl:text-2xl text-lg">
         <div class="flex gap-12 items-center">
@@ -88,7 +88,7 @@
   </main>
   <script>
   /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-  function myFunction() {
+  function Burger() {
     var x = document.getElementById("navbar");
     if (x.style.display === "flex") {
       x.style.display = "none";
