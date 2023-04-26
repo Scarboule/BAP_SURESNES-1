@@ -14,11 +14,15 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 100;
 }
+.game-section {
+  width: 80vw;
+  height: 80%;
+}
 
 #Result {
   position: absolute;
   width: 80vw;
-  height: 600px;
+  height: 80%;
   display: none;
 }
 
