@@ -1,84 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style_burger.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
 </head>
 <body>
-    <header class="h-[10vh] w-full bg-white">
-        <nav class="w-5/6 flex h-[10vh] text-xl text-[#1C1F4A] font-semibold mx-auto justify-between align-middle">
-            <img class="my-7" src="./img/Logo.png" alt="Logo">
-            <a class="my-8" href="#">Ma Ville</a>
-            <a class="my-8" href="#">Mon Enfant</a>
-            <a class="my-8" href="#">Mon Quotidien</a>
-            <a class="my-8" href="#">Mes Démarche</a>
-            <a class="my-8" href="#">Mes Loisirs</a>
-            <a class="my-5 text-white bg-[#F39653] rounded-full px-4 py-2" href="#">Budget Participatif</a>
-        </nav>
-    </header>
-    
-    <div id="baniere" class="font-semibold text-lg text-white flex gap-8 bg-[url('./img/background.png')] px-[10vw] py-6 w-full bg-center">
-        <a href="index.html">Accueil</a>
-        <p class="font-bold">-</p>
-        <a class="text-gray-200" href="PAT.html">Découvrez la PAT</a>
-    </div>
-    <main class="my-[76px] px-[10vw] text-2xl">
+  <header class="md:h-[10vh] w-full bg-white">
+    <nav id="navbar" class="hidden md:flex flex-col md:flex-row md:h-[10vh] items-center lg:text-xl text-base text-[#1C1F4A] font-semibold mx-auto justify-around align-middle">
+      <img class="h-[30%] lg:block hidden" src="./img/Logo.png" alt="Logo">
+      <img class="h-[30%] lg:hidden md:block hidden" src="./img/Blason 1.png" alt="Logo">
+      <a class = "block text-center md:inline" href="#">Ma Ville</a>
+      <a class = "block text-center md:inline" href="#">Mon Enfant</a>
+      <a class = "block text-center md:inline" href="#">Mon Quotidien</a>
+      <a class = "block text-center md:inline" href="#">Mes Démarche</a>
+      <a class = "block text-center md:inline" href="#">Mes Loisirs</a>
+      <a class="font-bold flex items-center justify-center gap-4 text-white bg-[#F39653] md:rounded-full px-4 py-2" href="#"><img src="img/ordi 1.png">Budget Participatif</a>
+    </nav>
+    <a href="javascript:void(0);" class="icon absolute top-2 right-2" onclick="myFunction()">
+      <p id="burger-button" class="block md:hidden">&#9776</p>
+    </a>
+  </header>
+  <div id="baniere" class="font-semibold text-lg text-white flex sm:gap-8 gap-2 bg-[url('./img/background.png')] px-[10vw] py-6 w-full bg-center">
+    <a href="index.html">Accueil</a>
+    <p class="font-bold">-</p>
+    <a class="text-gray-200" href="PAT.html">Découvrez la PAT</a>
+  </div>
+    <main class="my-[76px] px-[10vw] lg:text-xl xl:text-2xl text-lg">
         <div class="flex gap-12 items-center">
-            <h1 class="w-[800px] font-extrabold text-5xl uppercase text-[#1C1F4A]">Découvrez la Pat</h1>
-            <div class="border w-[calc(100vw-350px)] border-solid border-blue-500 h-0"></div>
+            <h1 class="lg:w-[800px] w-[300px] font-extrabold lg:text-5xl text-3xl uppercase text-[#1C1F4A]">Découvrez la Pat</h1>
+            <div class="border w-[calc(100%-350px)] border-solid border-blue-500 h-0"></div>
         </div>
         <p class="text-[#F39653] font-bold mt-1">Le 10 juin 2023 11h-21h</p>
-        <img src="img/logo_PAT.png" class="w-[400px] h-250px float-right p-3"></img>
+        <img src="img/logo_PAT.png" class="lg:w-[400px] lg:h-[250px] w-[250px] h-150px md:float-right float-none mx-auto my-6 p-3"></img>
         <p class="my-10">Nous vous invitons à participer à un événement sur la PAT (Projet Alimentaire Territorial) 
             de Suresnes, qui vise à promouvoir une alimentation locale, durable et responsable dans les 
             écoles de la ville de Suresnes.</p>
-        <p class="my-6">Lors de cet événement, vous pourrez rencontrer des acteurs locaux de la filière alimentaire,
+    <p class="my-6">Lors de cet événement, vous pourrez rencontrer des acteurs locaux de la filière alimentaire,
             des agriculteurs, des producteurs, des transformateurs, des distributeurs et des restaurateurs, 
            qui s'engagent à offrir des produits de qualité, respectueux de l'environnement et de la santé.</p>
-        <p class="my-6">
+    <p class="my-6">
             Vous pourrez également assister à des conférences et des ateliers pour les petits comme les grands sur les enjeux du développement d'une alimentation durable . </p>
         <p class="my-6">Nous espérons vous voir nombreux à cet événement pour contribuer ensemble à la promotion d'une alimentation locale, durable et responsable dans notre territoire.</p>
-        <div class="px-8 py-4 w-[45vw]">
+        <div class="px-8 py-4 lg:w-[600px] sm:w-[450px] w-auto">
             <p class="font-semibold">Nous vous donnons rendez-vous sur la Place du Général Leclerc à Suresnes, de 11h à 21h . </p>
         </div>
         <iframe class="my-16"src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.418391655974!2d2.224603312169098!3d48.86930009981898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e664da1b143867%3A0x48e0b7beb755ba10!2sPl.%20du%20G%C3%A9n%C3%A9ral%20Leclerc%2C%2092150%20Suresnes!5e0!3m2!1sfr!2sfr!4v1682424357321!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <hr class="border border-solid border-gray-300 w-full">
-        <div class="my-8 flex items-center gap-4">
-            <p>Partagez sur : </p>
-            <img src="img/Facebook_logo_(square) 1.png" alt="">
-            <img src="img/twitter-logo 1.png" alt="">
-            <img src="img/mail.png" alt="">
-        </div>
-        <div class="flex items-center justify-between">
-            <img src="img/Blason 1.png" alt="">
-            <div class="flex flex-col gap-2 w-[300px]">
-                <h2 class="font-extrabold text-2xl text-[#F39653] uppercase">La mairie</h2>
-                <p class="text-xl">2 rue Carnot, 92150 Suresnes</p>
-                <p class="text-xl">01 41 18 19 20</p>
-                <p class="text-sm text-[#F39653] text-center">ACCÈS ET HORAIRES D’OUVERTURE</p>
-                <p class="mt-4 font-bold text-sm text-center">NOUS CONTACTER</p>
+        <hr class="my-4 border border-solid border-gray-300 w-full">
+        <div class="md:block flex flex-col-reverse">
+            <div class="my-8 md:justify-normal justify-around flex items-center gap-4">
+                <p class="md:block hidden">Partagez sur : </p>
+                <img src="img/Facebook_logo_(square) 1.png" alt="">
+                <img src="img/twitter-logo 1.png" alt="">
+                <img src="img/mail.png" alt="">
             </div>
-            <div class="flex flex-col gap-2 w-[300px]">
-                <h2 class="font-extrabold text-2xl text-[#F39653] uppercase">Lettre D'information</h2>
-                <p class="text-xl">Abonnez-vous à la newsletter pour ne rien manquer des dernières actualités ou des prochains événements.</p>
-                <p class="mt-4 font-bold text-sm text-center">RECEVOIR LA NEWSLETTER</p>
+            <div class="flex items-center md:gap-8 gap-16 md:flex-row flex-col justify-between">
+                <img class="lg:block hidden" src="img/Blason 1.png" alt="">
+                <div class="flex flex-col gap-2 md:w-[300px] w-[250px]">
+                    <h2 class="font-extrabold md:text-2xl text-xl text-[#F39653] uppercase">La mairie</h2>
+                    <p class="md:text-xl text-lg">2 rue Carnot, 92150 Suresnes</p>
+                    <p class="md:text-xl text-lg">01 41 18 19 20</p>
+                    <p class="md:text-sm text-xs text-[#F39653] text-center">ACCÈS ET HORAIRES D’OUVERTURE</p>
+                    <p class="mt-4 font-bold text-sm text-center">NOUS CONTACTER</p>
+                </div>
+                <div class="flex flex-col gap-2 md:w-[300px] w-[250px]">
+                    <h2 class="font-extrabold md:text-2xl text-xl text-[#F39653] uppercase">Lettre D'information</h2>
+                    <p class="md:text-xl text-lg">Abonnez-vous à la newsletter pour ne rien manquer des dernières actualités ou des prochains événements.</p>
+                    <p class="mt-4 font-bold md:text-sm text-xs text-center">RECEVOIR LA NEWSLETTER</p>
+                </div>
             </div>
         </div>
-        <footer class="mx-auto my-12 text-sm flex text-gray-400 w-1/2 justify-between">
-            <a href="">Plan du site</a>
-            <p>|</p>
-            <a href="">Mention Légales</a>
-            <p>|</p>
-            <a href="">Crédits</a>
-            <p>|</p>
-            <a href="">Accessibilité</a>
-            <p>|</p>
-            <a href="">Contact</a>
-        </footer>
     </main>
-
+    <footer class="sm:mx-auto mx-6 my-12 text-sm sm:flex  grid grid-rows-3 grid-cols-2 text-gray-400 gap-4 sm:w-3/4 justify-around">
+        <a class="sm:ml-0 ml-[15vm]"href="">Plan du site</a>
+        <p class="sm:block hidden">|</p>
+        <a class="sm:ml-0 ml-[15vm]"href="">Mention Légales</a>
+        <p class="sm:block hidden">|</p>
+        <a class="sm:ml-0 ml-[15vm]"href="">Crédits</a>
+        <p class="sm:block hidden">|</p>
+        <a class="sm:ml-0 ml-[15vm]"href="">Accessibilité</a>
+        <p class="sm:block hidden">|</p>
+        <a class="sm:ml-0 ml-[15vm]"href="">Contact</a>
+    </footer>
+  </main>
+  <script>
+  /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+  function myFunction() {
+    var x = document.getElementById("navbar");
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+    }
+  }
+  </script>
 </body>
 </html>

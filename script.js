@@ -86,7 +86,7 @@ function spawnObject() {
   }
   object.style.top = '-50px';
 
-  object.style.left = `${Math.floor(Math.random() * (spawn.offsetWidth - object.offsetWidth))}px`;
+  object.style.left = `${Math.floor(Math.random() * (spawn.offsetWidth - 60))}px`;
   objectsContainerEl.appendChild(object);
   objects.push(object);
   lastSpawnTime = Date.now();
@@ -163,9 +163,12 @@ function stopGame(){
   isStarted = false;
 }
 function startGame() {
+  spawn.style.display = "Block"
+  result.style.display = "None"
   var scrollTopValue = window.pageYOffset || document.documentElement.scrollTop;
   gameOverlay.style.top = scrollTopValue + "px";
   gameOverlay.classList.toggle("hidd");
+  console.log("cool")
   isStarted = true;
   // Reset game variables
   updateImage();
