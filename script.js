@@ -110,7 +110,7 @@ function spawnObject() {
 
 function updateImage() {
   if (score >= 50) {
-    bucketEl.style.backgroundImage = "url(image/panier_pomme.png)";
+    bucketEl.style.backgroundImage = "url(image/Panier_pomme.png)";
   } else {
     //console.log("pas cool")
     bucketEl.style.backgroundImage = "url(image/Panier.png)";
