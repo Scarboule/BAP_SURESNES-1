@@ -1,7 +1,9 @@
 body {
   position: relative;
 }
-
+#game-img{
+  max-width: unset !important;
+}
 .game-overlay {
   position: absolute;
   top: 0;
