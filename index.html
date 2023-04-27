@@ -6,8 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+        integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style2.css">
     <title>Suresnes</title>
 </head>
@@ -18,22 +22,22 @@
             <div class="exit-game absolute top-[3%] right-[5%] text-4xl text-white" onclick="stopGame()">
                 <i class="fa-solid fa-xmark"></i>
             </div>
-            
-    
+
+
             <div id="game-container">
                 <div id="spawn-container">
                     <div id="score-container">
                         Score: <span id="score">0</span>
                     </div>
                     <div id="objects-container"></div>
-    
+
                     <div id="timer-container">
                         Time left: <span id="timer"></span>
                     </div>
                 </div>
                 <div id="bucket"></div>
             </div>
-    
+
             <div id="Result">
                 <p id="promocode"></p>
                 <!-- <button onclick="checkcode()">Check</button> --->
@@ -43,36 +47,42 @@
     </section>
 
     <header class="md:h-[10vh] w-full bg-white">
-        <nav id="navbar" class="hidden md:flex flex-col md:flex-row md:h-[10vh] items-center lg:text-xl text-base text-[#1C1F4A] font-semibold mx-auto justify-around align-middle">
-          <img class="h-[30%] lg:block hidden" src="./img/Logo.png" alt="Logo">
-          <img class="h-[30%] lg:hidden md:block hidden" src="./img/Blason 1.png" alt="Logo">
-          <a class = "block text-center md:inline" href="#">Ma Ville</a>
-          <a class = "block text-center md:inline" href="#">Mon Enfant</a>
-          <a class = "block text-center md:inline" href="#">Mon Quotidien</a>
-          <a class = "block text-center md:inline" href="#">Mes Démarche</a>
-          <a class = "block text-center md:inline" href="#">Mes Loisirs</a>
-          <a class="font-bold flex items-center justify-center gap-4 text-white bg-[#F39653] md:rounded-full px-4 py-2" href="#"><img src="img/ordi 1.png">Budget Participatif</a>
+        <nav id="navbar"
+            class="hidden md:flex flex-col md:flex-row md:h-[10vh] items-center lg:text-xl text-base text-[#1C1F4A] font-semibold mx-auto justify-around align-middle">
+            <img class="h-[30%] lg:block hidden" src="./img/Logo.png" alt="Logo">
+            <img class="h-[30%] lg:hidden md:block hidden" src="./img/Blason 1.png" alt="Logo">
+            <a class="block text-center md:inline" href="#">Ma Ville</a>
+            <a class="block text-center md:inline" href="#">Mon Enfant</a>
+            <a class="block text-center md:inline" href="#">Mon Quotidien</a>
+            <a class="block text-center md:inline" href="#">Mes Démarche</a>
+            <a class="block text-center md:inline" href="#">Mes Loisirs</a>
+            <a class="font-bold flex items-center justify-center gap-4 text-white bg-[#F39653] md:rounded-full px-4 py-2"
+                href="#"><img src="img/ordi 1.png">Budget Participatif</a>
         </nav>
-      </header>
+    </header>
 
     <section class="relative h-[60vh]">
         <div class="h-full bg-cover bg-center bg-no-repeat bg-[url('./img/background.png')]">
-            <div id="baniere" class="font-semibold text-lg text-white flex sm:gap-8 gap-2 px-[10vw] py-6 w-full bg-center">
+            <div id="baniere"
+                class="font-semibold text-lg text-white flex sm:gap-8 gap-2 px-[10vw] py-6 w-full bg-center">
                 <a href="index.html">Accueil</a>
                 <p class="font-bold">-</p>
                 <a class="text-gray-200" href="PAT.html">Découvrez la PAT</a>
             </div>
         </div>
-            <form class="h-8 p-4 pb-12 gap-4 rounded-full absolute inset-x-1/4 inset-y-1/2 bg-white flex justify-between" onsubmit="return checkCode()">
-                <input id="codeInput" type="text"
-                    class="w-full h-8 text-gray-700 border border-gray-300 rounded-md focus:border-red-500 focus:outline-none focus:shadow-outline-red"
-                    placeholder="Code">
-                <button type="submit" class="h-8 w-52 px-4 bg-[#F39653] text-white font-bold rounded hover:bg-blue-700">Vérifier le
-                    code</button>
-            </form>
+        <form class="h-8 p-4 pb-12 gap-4 rounded-full absolute inset-x-32 xl:inset-x-1/4 inset-y-1/2 bg-white flex justify-between"
+            onsubmit="return checkCode()">
+            <input id="codeInput" type="text"
+                class="w-full h-8 text-gray-700 border border-gray-300 rounded-md focus:border-red-500 focus:outline-none focus:shadow-outline-red"
+                placeholder="Code">
+            <button type="submit"
+                class="h-8 w-52 px-2 md:px-4 font-semibold bg-[#F39653] text-white md:font-bold rounded hover:bg-blue-700">Vérifier le
+                code</button>
+        </form>
     </section>
 
-    <main class="py-12 text-center px-4 sm:px-8 gap-x-8 md:gap-x-12 xl:mx-auto xl:w-3/4 flex flex-wrap justify-center align-center">
+    <main
+        class="py-12 text-center px-4 sm:px-8 gap-x-8 md:gap-x-12 xl:mx-auto xl:w-3/4 flex flex-wrap justify-center align-center">
         <div class="max-w-[120px]">
             <img class="py-4 mx-auto" src="./img/citoyen.jpg" alt="">
             <p>Portail citoyen</p>
@@ -100,18 +110,20 @@
     </main>
     <div class="call-to-game w-1/2 shadow-lg rounded-lg overflow-hidden mt-20 m-auto font-bold">
         <div class="w-full h-full relative">
-            <div class="flex absolute inset-[50%] z-10 text-xl gap-3 justify-center items-center fa-beat" onclick="startGame()">
+            <div class="flex absolute inset-[50%] z-10 text-xl gap-3 justify-center items-center fa-beat"
+                onclick="startGame()">
                 <i class="text-[#F39653] fa-solid fa-play  "></i>
-                <p class="text-[#F39653]" >Jouer</p>
+                <p class="text-[#F39653]">Jouer</p>
             </div>
 
-            <img src="image/bg.png" alt="game-background" class="inset-[50%] w-full h-full sepia hover:sepia-0 transition duration-300 ease-in-out opacity-50">
-        
+            <img src="image/bg.png" alt="game-background"
+                class="inset-[50%] w-full h-full sepia hover:sepia-0 transition duration-300 ease-in-out opacity-50">
+
             <div class="absolute z-10 top-[15%] w-full flex justify-center text-black">
                 <h3 class="call-to-play p-4  text-[#1C1F4A] rounded">Tentez de gagner un code de réduction</h3>
             </div>
         </div>
-        
+
     </div>
 
     <section class="py-12 flex flex-col items-center justify-center">
@@ -123,8 +135,8 @@
             Dommage, vous avez perdu !</div>
     </section>
 
-  <script src="script_suresnes.js"></script>
-  <script src="script.js"></script>
+    <script src="script_suresnes.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

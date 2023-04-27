@@ -33,38 +33,38 @@ let gameMargin = BODY.offsetWidth - game.offsetWidth;
 
 
 // Event listeners
-bucketEl.addEventListener('mousedown', startMoveBucket);
-bucketEl.addEventListener('touchstart', startMoveBucket, { passive: false });
-document.addEventListener('mouseup', stopMoveBucket);
-document.addEventListener('touchend', stopMoveBucket);
+// bucketEl.addEventListener('mousedown', startMoveBucket);
+// bucketEl.addEventListener('touchstart', startMoveBucket, { passive: false });
+// document.addEventListener('mouseup', stopMoveBucket);
+// document.addEventListener('touchend', stopMoveBucket);
 
 // Functions
 
 
 
-function startMoveBucket(e) {
-  e.preventDefault();
-  bucketEl.classList.add('moving');
-  document.addEventListener('mousemove', moveBucket);
-  document.addEventListener('touchmove', moveBucket, { passive: false });
-}
+// function startMoveBucket(e) {
+//   e.preventDefault();
+//   bucketEl.classList.add('moving');
+//   document.addEventListener('mousemove', moveBucket);
+//   document.addEventListener('touchmove', moveBucket, { passive: false });
+// }
 
-function stopMoveBucket() {
-  bucketEl.classList.remove('moving');
-  document.removeEventListener('mousemove', moveBucket);
-  document.removeEventListener('touchmove', moveBucket);
-}
+// function stopMoveBucket() {
+//   bucketEl.classList.remove('moving');
+//   document.removeEventListener('mousemove', moveBucket);
+//   document.removeEventListener('touchmove', moveBucket);
+// }
 
-function moveBucket(e) {
-  e.preventDefault();
-  const containerRect = objectsContainerEl.getBoundingClientRect();
-  const x = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-  const relX = x - containerRect.left;
-  const bucketWidth = bucketEl.offsetWidth;
-  const maxLeft = containerRect.width - bucketWidth + gameMargin; // Nouvelle valeur pour définir la position maximale à gauche
-  const left = Math.min(Math.max(relX - bucketWidth / 2, 0), maxLeft); // Utiliser Math.min() et Math.max() pour limiter la position gauche du seau
-  bucketEl.style.left = `${left}px`;
-}
+// function moveBucket(e) {
+//   e.preventDefault();
+//   const containerRect = objectsContainerEl.getBoundingClientRect();
+//   const x = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+//   const relX = x - containerRect.left;
+//   const bucketWidth = bucketEl.offsetWidth;
+//   const maxLeft = containerRect.width - bucketWidth + gameMargin; // Nouvelle valeur pour définir la position maximale à gauche
+//   const left = Math.min(Math.max(relX - bucketWidth / 2, 0), maxLeft); // Utiliser Math.min() et Math.max() pour limiter la position gauche du seau
+//   bucketEl.style.left = `${left}px`;
+// }
 /*function moveBucket(e) {
   e.preventDefault();
   const containerRect = objectsContainerEl.getBoundingClientRect();
@@ -73,7 +73,18 @@ function moveBucket(e) {
   bucketEl.style.left = `${Math.max(Math.min(relX - bucketEl.offsetWidth / 2, containerRect.width - bucketEl.offsetWidth), 0)}px`;
 }*/
 
+game.addEventListener('mousemove', (e) => {
+  let borderGame = game.getBoundingClientRect();
 
+  bucketEl.style.left = `calc(${e.clientX - 50}px - 10vw)`;
+
+  if (e.clientX < borderGame.left + 50) {
+    bucketEl.style.left = `0px`;
+  }
+  if (e.clientX > borderGame.right - 50) {
+    bucketEl.style.left = `calc(${borderGame.right - 100}px - 10vw)`;
+  }
+})
 
 
 function spawnObject() {
@@ -158,7 +169,7 @@ function updateTimer() {
     document.getElementById('timer').textContent = remainingSeconds;
   }
 }
-function stopGame(){
+function stopGame() {
   clearInterval(gameTimer);
   isStarted = false;
 }
@@ -186,19 +197,19 @@ function startGame() {
   scoreEl.textContent = score;
   document.getElementById('timer').textContent = GAME_DURATION;
 
-    
-  
-    // Start game loop
-    gameTimer = setInterval(() => {
-      if (!gameStartTime) {
-        gameStartTime = Date.now();
-      }
-      if (Date.now() - lastSpawnTime > OBJECT_SPAWN_DELAY) {
-        spawnObject();
-      }
-      handleObjectFall();
-      updateTimer();
-    }, 1); // frames per second
+
+
+  // Start game loop
+  gameTimer = setInterval(() => {
+    if (!gameStartTime) {
+      gameStartTime = Date.now();
+    }
+    if (Date.now() - lastSpawnTime > OBJECT_SPAWN_DELAY) {
+      spawnObject();
+    }
+    handleObjectFall();
+    updateTimer();
+  }, 1); // frames per second
 }
 
 
@@ -231,7 +242,7 @@ function checkcode() {
   result.appendChild(resultcode);
 }
 
-    // Start the game
+// Start the game
 
 window.onscroll = function () {
   var scrollTopValue = window.pageYOffset || document.documentElement.scrollTop;
@@ -241,7 +252,7 @@ window.onscroll = function () {
 gameOverlay.addEventListener('click', () => {
   if (!isStarted) {
     gameOverlay.classList.toggle("hidd");
-  } 
+  }
 });
 
 async function gameEndCloseTimer() {

@@ -14,6 +14,7 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 100;
 }
+
 .game-section {
   width: 80vw;
   height: 80%;
@@ -55,9 +56,11 @@ body {
   left: 10px;
   font-size: 24px;
 }
-#timer-container{
+
+#timer-container {
   color: black;
 }
+
 #score-label {
   font-weight: bold;
 }
@@ -113,7 +116,7 @@ body {
 .sho {
   display: block;
 }
-.call-to-play{
+
+.call-to-play {
   background-color: rgba(255, 255, 255, 0.4);
 }
-
