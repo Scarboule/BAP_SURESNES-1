@@ -1,5 +1,5 @@
 // Constants
-const GAME_DURATION = 1000; // seconds
+const GAME_DURATION = 20; // seconds
 const OBJECT_FALL_SPEED = 1; // pixels per frame
 const OBJECT_SPAWN_DELAY = 800; // milliseconds
 const OBJECT_SPAWN_PROBABILITY = 0.7; // probability of a new object spawning on each frame
@@ -9,6 +9,8 @@ const OBJECT_SIZE = 50;
 const GAME_HEIGHT = 600; // Change the value as needed
 const BUCKET_HEIGHT = 50;
 const BUCKET_TOP = GAME_HEIGHT - BUCKET_HEIGHT;
+const fruits = ["url('image/banane.png')","url('image/cerise.png')","url('image/fraise.png')","url('image/orange.png')","url('image/poire.png')","url('image/pomme.png')"]
+const fruitsnul = ["url('image/burger.png')","url('image/donut.png')","url('image/frite.png')","url('image/sandwich.png')"]
 
 
 // Game variables
@@ -92,8 +94,11 @@ function spawnObject() {
   object.classList.add('object');
   if (Math.random() < OBJECT_SPAWN_PROBABILITY) {
     object.classList.add('collectible');
+    object.style.backgroundImage = fruits[Math.floor(Math.random() * fruits.length)]
   } else {
     object.classList.add('dangerous');
+    object.style.backgroundImage = fruitsnul[Math.floor(Math.random() * fruitsnul.length)]
+
   }
   object.style.top = '-50px';
 
