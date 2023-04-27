@@ -21,6 +21,9 @@ body {
   width: 80vw;
   height: 80%;
 }
+.cible{
+  display: none;
+}
 
 #Result {
   position: absolute;
@@ -113,6 +116,6 @@ body {
   display: block;
 }
 
-.call-to-play {
+.call-to-play, .cible {
   background-color: rgba(255, 255, 255, 0.4);
 }
