@@ -264,3 +264,14 @@ async function gameEndCloseTimer() {
   await new Promise(r => setTimeout(r, 2000));
   isStarted = false;
 }
+
+const trigger = document.querySelector('.trigger');
+const cible = document.querySelector('.cible');
+
+trigger.addEventListener('mouseover', function() {
+  cible.style.display = 'block';
+});
+
+trigger.addEventListener('mouseout', function() {
+  cible.style.display = 'none';
+});
